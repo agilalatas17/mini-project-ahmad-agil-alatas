@@ -1,0 +1,35 @@
+footer.ant-layout-footer {
+  padding: 0 150px;
+}
+
+footer.ant-layout-footer .footer-content a.brand-logo {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+footer.ant-layout-footer .footer-content h5 {
+  margin-bottom: 23px;
+}
+
+footer.ant-layout-footer .footer-content li.ant-list-item {
+  margin-bottom: 8px;
+  padding: 0;
+  border: 0;
+}
+
+footer.ant-layout-footer .footer-content p,
+footer.ant-layout-footer .footer-content li.ant-list-item a {
+  font-weight: 300;
+  line-height: 24px;
+  color: #b0b0b0;
+}
+
+footer.ant-layout-footer .footer-content li.ant-list-item a:hover {
+  color: #152c5b;
+}
+
+footer.ant-layout-footer .footer-bottom {
+  padding: 40px 0;
+  text-align: center;
+  color: #b0b0b0;
+}
