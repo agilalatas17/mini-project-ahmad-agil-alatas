@@ -19,7 +19,7 @@ function HeaderComponent() {
       style={{
         position: "sticky",
         top: 0,
-        zIndex: 1,
+        zIndex: 99,
         width: "100%",
       }}
     >
@@ -28,12 +28,12 @@ function HeaderComponent() {
           <span>Stay</span>cation.com
         </Link>
         <Menu
-          theme="dark"
           mode="horizontal"
           items={MENU_ITEM}
           disabledOverflow
           onClick={onClick}
           selectedKeys={[current]}
+          style={{ zIndex: 99 }}
         />
       </Row>
     </Header>

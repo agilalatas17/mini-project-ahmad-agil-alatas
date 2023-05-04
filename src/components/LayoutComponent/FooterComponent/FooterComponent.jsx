@@ -52,7 +52,7 @@ function FooterComponent() {
             <Title level={5}>Connect Us</Title>
             <List>
               <List.Item>
-                <Link>support@staycation.id</Link>
+                <Link>support@staycation.com</Link>
               </List.Item>
               <List.Item>
                 <Link>021 - 2208 - 1996</Link>

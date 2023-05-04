@@ -1,20 +1,5 @@
 header.ant-layout-header {
   padding: 0 150px;
   background-color: white;
-}
-
-/* header a.brand-logo {
-  font-family: "Poppins", sans-serif;
-  font-size: 26px;
-  font-weight: 500;
-  color: #152c5b;
-}
-
-header a.brand-logo span {
-  color: #3252df;
-} */
-
-header ul.ant-menu li.ant-menu-item {
-  background-color: #fff;
-  color: #152c5b;
+  border-bottom: 1px solid #e5e5e5;
 }
