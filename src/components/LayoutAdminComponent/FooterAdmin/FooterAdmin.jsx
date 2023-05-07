@@ -1,12 +1,9 @@
 import React from "react";
-import { Layout, Row, Col, Typography, List } from "antd";
-import { Link } from "react-router-dom";
-import "./footerComponent.css";
+import { Layout } from "antd";
+import "./footerAdmin.css";
 
-function FooterComponent() {
-  const { Title } = Typography;
+function FooterAdmin() {
   const { Footer } = Layout;
-
   return (
     <Footer>
       <p>
@@ -17,4 +14,4 @@ function FooterComponent() {
   );
 }
 
-export default FooterComponent;
+export default FooterAdmin;
