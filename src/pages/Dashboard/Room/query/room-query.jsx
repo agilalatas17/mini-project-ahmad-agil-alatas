@@ -7,7 +7,7 @@ export const GET_ROOMS = gql`
       uuid
       nama_room
       lokasi
-      images_room
+      image
       harga
     }
   }
@@ -20,10 +20,30 @@ export const GET_ROOM_BY_PK = gql`
       uuid
       nama_room
       lokasi
-      images_room
+      image
       deskripsi
-      fasilitas
       harga
+    }
+  }
+`;
+
+// Create Data
+export const ADD_ROOM = gql`
+  mutation room($object: booking_app_room_insert_input!) {
+    insert_booking_app_room_one(object: $object) {
+      uuid
+    }
+  }
+`;
+
+// Update Data
+export const UPDATE_ROOM = gql`
+  mutation room(
+    $_set: booking_app_room_set_input!
+    $pk_columns: booking_app_room_pk_columns_input!
+  ) {
+    update_booking_app_room_by_pk(_set: $_set, pk_columns: $pk_columns) {
+      uuid
     }
   }
 `;
