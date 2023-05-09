@@ -1,0 +1,12 @@
+section#list-room button.ant-btn.btn-add {
+  padding: 8px 16px;
+  font-size: 16px;
+  color: #3252df;
+  border: 2px solid #3252df;
+  border-radius: 4px;
+}
+
+section#list-room button.ant-btn.btn-add:hover {
+  background-color: #3252df;
+  color: #fff;
+}
