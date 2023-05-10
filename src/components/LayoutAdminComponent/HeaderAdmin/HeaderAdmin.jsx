@@ -1,12 +1,39 @@
-import React, { useState } from "react";
-import { UserOutlined } from "@ant-design/icons";
-import { Layout, Row, Avatar, Space, Typography } from "antd";
+import React from "react";
+import { Layout, Row, Button } from "antd";
 import { Link } from "react-router-dom";
 import "./headerAdmin.css";
+import { useQuery } from "@apollo/client";
+import { GET_PROFILE_NAME } from "./query/profile-query";
 
 function HeaderAdmin() {
   const { Header } = Layout;
-  const { Title } = Typography;
+
+  // GraphQL
+  const {
+    data: profileData,
+    loading: isProfileLoading,
+    error: isProfileError,
+  } = useQuery(GET_PROFILE_NAME);
+
+  const items = [
+    {
+      key: "1",
+      label: (
+        <Link to="/">
+          <Button
+            type="primary"
+            onClick={() => {
+              localStorage.removeItem("token");
+              localStorage.removeItem("cekAdmin");
+            }}
+            danger
+          >
+            Logout
+          </Button>
+        </Link>
+      ),
+    },
+  ];
 
   return (
     <Header
@@ -20,12 +47,20 @@ function HeaderAdmin() {
     >
       <Row justify="space-between">
         <div />
-        <Space>
-          <Avatar size="large" icon={<UserOutlined />} />
-          <Title level={5} className="username" style={{ marginLeft: 8 }}>
-            Hi, Agil
-          </Title>
-        </Space>
+        {}
+
+        <Link to="/">
+          <Button
+            type="primary"
+            danger
+            onClick={() => {
+              localStorage.removeItem("token");
+              localStorage.removeItem("cekAdmin");
+            }}
+          >
+            Logout
+          </Button>
+        </Link>
       </Row>
     </Header>
   );

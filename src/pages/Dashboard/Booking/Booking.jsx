@@ -6,7 +6,16 @@ function Booking() {
   return (
     <>
       <Title level={3}>Booking</Title>
-      <Row></Row>
+      <Row>
+        {/* <Table
+          className="table-room"
+          rowKey="uuid"
+          columns={TABLE_COLUMNS}
+          dataSource={roomData?.booking_app_room}
+          loading={isRoomLoading}
+          style={{ width: "100%", marginTop: 24 }}
+        /> */}
+      </Row>
     </>
   );
 }

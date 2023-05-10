@@ -9,10 +9,7 @@ function FooterComponent() {
 
   return (
     <Footer>
-      <p>
-        &copy; Copyright 2023 • Made with ❤️ by R.S AHMAD AGIL ALATAS •
-        Staycation.com
-      </p>
+      <p>&copy; Copyright 2023 • Made with ❤️ by R.S AHMAD AGIL ALATAS</p>
     </Footer>
   );
 }

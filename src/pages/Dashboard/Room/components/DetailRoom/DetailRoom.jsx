@@ -4,7 +4,7 @@ import Gap from "../../../../../components/Gap/Gap";
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { GET_ROOM_BY_PK } from "../../query/room-query";
-import { Row, Space, Typography, Image } from "antd";
+import { Row, Space, Typography, Image, Col } from "antd";
 import { Link } from "react-router-dom";
 
 function DetailRoom() {
@@ -51,26 +51,32 @@ function DetailRoom() {
           <Gap height={48} />
 
           <Row justify="start">
-            <Space direction="vertical">
-              <Title level={5}>Deskripsi</Title>
-              <p>{data?.deskripsi}</p>
-            </Space>
+            <Col span={24}>
+              <Space direction="vertical" style={{ display: "block" }}>
+                <Title level={5}>Deskripsi</Title>
+                <p>{data?.deskripsi}</p>
+              </Space>
+            </Col>
 
-            <Space
-              direction="horizontal"
-              align="middle"
-              style={{ marginTop: 24 }}
-            >
-              <Title level={5} style={{ marginBottom: 24 }}>
-                Harga
-              </Title>
-              <p>
-                Rp <span>{data?.harga}</span>
-              </p>
-            </Space>
+            <Col span={24} style={{ marginBottom: 32 }}>
+              <Space
+                direction="horizontal"
+                align="middle"
+                style={{ marginTop: 24 }}
+              >
+                <Title level={5}>Harga</Title>
+                <p>
+                  Rp <span>{data?.harga}</span>
+                </p>
+              </Space>
+            </Col>
           </Row>
 
-          <Link to="/room" className="btn-kembali">
+          <Link
+            to="/admin/room"
+            className="btn-kembali"
+            style={{ display: "inline-block" }}
+          >
             Kembali
           </Link>
         </section>

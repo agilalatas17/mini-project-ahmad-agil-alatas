@@ -1,0 +1,7 @@
+section#detail-room-customer {
+  padding: 50px 0;
+}
+
+section#detail-room-customer .ant-card.booking-form-card .ant-card-head-title {
+  font-weight: 500;
+}

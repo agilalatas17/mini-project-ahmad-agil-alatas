@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 export const SIDER_ITEM = [
   {
-    key: "/booking",
+    key: "/admin/booking",
     icon: <CalendarOutlined />,
-    label: <Link to="/booking">Booking</Link>,
+    label: <Link to="/admin/booking">Booking</Link>,
   },
   {
-    key: "/room",
+    key: "/admin/room-admin",
     icon: <HomeOutlined />,
-    label: <Link to="/room">Room</Link>,
+    label: <Link to="/admin/room-admin">Room</Link>,
   },
 ];

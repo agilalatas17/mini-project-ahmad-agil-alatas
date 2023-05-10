@@ -113,7 +113,7 @@ function Room() {
       render: (_, record) =>
         roomData?.booking_app_room.length >= 1 ? (
           <Space>
-            <Link to={`/room/${record.uuid}`} className="btn-detail">
+            <Link to={`/admin/room/${record.uuid}`} className="btn-detail">
               Detail
             </Link>
             <Link onClick={() => handleEdit(record)} className="btn-edit">
@@ -225,6 +225,7 @@ function Room() {
 
   // handle Upload Image
   const handleUpload = async (file) => {
+    console.log(file);
     const body = {
       file: await getBase64(file.file.originFileObj),
       upload_preset: uploaderConfig.upload_preset,
@@ -232,6 +233,7 @@ function Room() {
       api_key: uploaderConfig.api_key,
     };
     uploadFile(body, (data) => {
+      console.log(data.url);
       setImage(data.url);
     });
   };
@@ -251,11 +253,6 @@ function Room() {
         <Title level={3}>List Room</Title>
 
         <Space style={{ marginTop: 48 }}>
-          {/* <Link to="/room/add">
-            <Button icon={<PlusOutlined />} className="btn-add">
-              Add Data
-            </Button>
-          </Link> */}
           <Button
             icon={<PlusOutlined />}
             className="btn-add"
