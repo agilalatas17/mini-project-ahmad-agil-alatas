@@ -15,11 +15,6 @@ section#welcomeSection p {
   color: #b0b0b0;
 }
 
-/* section#howelcomeSectionme .btn-show-me {
-  border-radius: 4px;
-  box-shadow: 0px 8px 15px rgba(50, 82, 223, 0.3);
-} */
-
 section#welcomeSection a.btn-show-me {
   background-color: #3252df;
   color: #fff;
@@ -72,8 +67,7 @@ section#room .card-list-room .ant-card-cover img {
 }
 
 section#room .card-list-room .ant-card-body {
-  padding: 8px;
-  /* margin-top: 16px; */
+  padding: 12px;
 }
 
 section#room .card-list-room .ant-card-meta-title {

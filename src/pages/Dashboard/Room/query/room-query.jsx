@@ -8,6 +8,7 @@ export const GET_ROOMS = gql`
       nama_room
       lokasi
       image
+      deskripsi
       harga
     }
   }
