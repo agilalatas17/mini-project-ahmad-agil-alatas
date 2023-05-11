@@ -24,7 +24,7 @@ function RoomCustomerPage() {
 
         <Gap height={32} />
 
-        <Row gutter={[30, 30]} justify="space-between">
+        <Row gutter={[30, 30]}>
           {roomCustomerLoading ? (
             <LoadingComponent />
           ) : (

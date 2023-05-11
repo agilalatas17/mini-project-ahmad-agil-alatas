@@ -166,8 +166,6 @@ function Room() {
       ...values,
     };
 
-    console.log(body);
-
     addRoom({
       variables: {
         object: {
