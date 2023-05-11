@@ -3,7 +3,7 @@ import "./roomCustomerPage.css";
 import Gap from "../../components/Gap/Gap";
 import LoadingComponent from "../../components/LoadingComponent/LoadingComponent";
 import { Row, Col, Space, Card, Typography } from "antd";
-import { GET_ROOMS } from "../HomePage/query/room-query";
+import { GET_ROOMS } from "./query/room-query";
 import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 
