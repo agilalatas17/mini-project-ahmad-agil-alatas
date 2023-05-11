@@ -43,7 +43,7 @@ const getBase64 = (file) =>
 function Room() {
   const { Title } = Typography;
   const [formRoomData] = Form.useForm();
-  const [image, setImage] = useState([]);
+  const [image, setImage] = useState();
   const [openModal, setOpenModal] = useState(false);
   const [confirmModalLoading, setConfirmModalLoading] = useState(false);
 
@@ -165,6 +165,8 @@ function Room() {
       image: image,
       ...values,
     };
+
+    console.log(body);
 
     addRoom({
       variables: {
@@ -331,7 +333,7 @@ function Room() {
                   name="image"
                   maxCount={1}
                   onRemove={() => {
-                    setImage([]);
+                    setImage();
                   }}
                   customRequest={() => {}}
                   onChange={handleUpload}
