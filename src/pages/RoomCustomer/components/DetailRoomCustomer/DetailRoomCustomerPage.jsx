@@ -15,14 +15,19 @@ import {
   Input,
   Button,
 } from "antd";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { GET_ROOM_BY_PK } from "../../query/room-query";
-import { useQuery } from "@apollo/client";
+import { GET_BOOKING, ADD_BOOKING } from "../../query/booking-query";
+import { useQuery, useMutation } from "@apollo/client";
 
 function DetailRoomCustomerPage() {
+  const token = localStorage.getItem("token");
   const { uuid } = useParams();
+  const navigate = useNavigate();
   const { Title } = Typography;
   const [formBooking] = Form.useForm();
+  const date = dayjs();
+  const formatDate = date.format("DD/MMM/YYYY");
 
   const [userInput, setUserInput] = useState({});
 
@@ -40,8 +45,35 @@ function DetailRoomCustomerPage() {
   });
   const roomData = roomCustomerData?.booking_app_room_by_pk;
 
-  const onFinish = (values) => {
-    console.log(values);
+  // Get Booking Data
+  const {
+    data: bookingData,
+    loading: isBookingLoading,
+    error: isBookingError,
+  } = useQuery(GET_BOOKING);
+
+  // Add Booking Data
+  const [addBooking, { loading: loadingAddBooking }] = useMutation(
+    ADD_BOOKING,
+    { refetchQueries: [GET_BOOKING] }
+  );
+
+  const onAddBooking = (values) => {
+    const body = {
+      nama_room: roomData?.nama_room,
+      lokasi_room: roomData?.lokasi,
+      ...values,
+    };
+
+    console.log(body);
+
+    addBooking({
+      variables: {
+        object: {
+          ...body,
+        },
+      },
+    });
   };
 
   return (
@@ -104,10 +136,16 @@ function DetailRoomCustomerPage() {
                 title="Form Pemesanan"
               >
                 <Title level={3} style={{ marginBottom: 32 }}>
-                  Rp {roomData?.harga} <span>/malam</span>
+                  Rp {roomData?.harga}{" "}
+                  <span style={{ fontWeight: 300 }}>/malam</span>
                 </Title>
 
-                <Form name="form_booking" onFinish={onFinish} layout="vertical">
+                <Form
+                  name="form_booking"
+                  form={formBooking}
+                  onFinish={onAddBooking}
+                  layout="vertical"
+                >
                   <Form.Item
                     label="Nama Pemesan"
                     name="nama_pemesan"
@@ -180,6 +218,11 @@ function DetailRoomCustomerPage() {
                     type="primary"
                     htmlType="submit"
                     style={{ width: "100%" }}
+                    onClick={() => {
+                      if (!token) {
+                        navigate("/login");
+                      }
+                    }}
                   >
                     Pesan Sekarang
                   </Button>
