@@ -113,7 +113,10 @@ function Room() {
       render: (_, record) =>
         roomData?.booking_app_room.length >= 1 ? (
           <Space>
-            <Link to={`/admin/room/${record.uuid}`} className="btn-detail">
+            <Link
+              to={`/admin/room-admin/${record.uuid}`}
+              className="btn-detail"
+            >
               Detail
             </Link>
             <Link onClick={() => handleEdit(record)} className="btn-edit">
