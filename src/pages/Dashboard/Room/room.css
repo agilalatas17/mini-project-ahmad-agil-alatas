@@ -10,3 +10,7 @@ section#list-room button.ant-btn.btn-add:hover {
   background-color: #3252df;
   color: #fff;
 }
+
+section#list-room .ant-modal-footer button.ant-btn.ant-btn-primary {
+  padding: 8px 16px;
+}
