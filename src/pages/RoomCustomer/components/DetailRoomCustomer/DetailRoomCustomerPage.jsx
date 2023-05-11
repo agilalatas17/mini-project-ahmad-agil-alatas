@@ -62,10 +62,10 @@ function DetailRoomCustomerPage() {
     const body = {
       nama_room: roomData?.nama_room,
       lokasi_room: roomData?.lokasi,
+      total_harga: roomData?.harga,
+      duration: 1,
       ...values,
     };
-
-    console.log(body);
 
     addBooking({
       variables: {
