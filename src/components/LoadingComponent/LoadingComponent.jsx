@@ -1,5 +1,6 @@
 import React from "react";
 import { Spin } from "antd";
+import "./loadingComponent.css";
 
 function LoadingComponent() {
   return (

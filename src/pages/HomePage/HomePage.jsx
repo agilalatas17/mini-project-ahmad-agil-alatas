@@ -37,16 +37,20 @@ function HomePage() {
             </Button>
           </Col>
           <Col span={12} style={{ padding: "0 0 0 50px" }}>
-            <Carousel autoplay>
-              {roomCustomerData?.booking_app_room?.slice(0, 4).map(
-                (item, index) =>
-                  index < 4 && (
-                    <div className="carousel-item" key={index}>
-                      <img src={item.image} />
-                    </div>
-                  )
-              )}
-            </Carousel>
+            {roomCustomerLoading ? (
+              <LoadingComponent />
+            ) : (
+              <Carousel autoplay>
+                {roomCustomerData?.booking_app_room?.slice(0, 4).map(
+                  (item, index) =>
+                    index < 4 && (
+                      <div className="carousel-item" key={index}>
+                        <img src={item.image} />
+                      </div>
+                    )
+                )}
+              </Carousel>
+            )}
           </Col>
         </Row>
       </section>
