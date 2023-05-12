@@ -2,7 +2,7 @@ import React from "react";
 import "./homePage.css";
 import { Typography, Button, Row, Col, Carousel, Card, Spin } from "antd";
 import LoadingComponent from "../../components/LoadingComponent/LoadingComponent";
-
+import { currencyRupiah } from "../../helpers/currency-formater";
 import { GET_ROOMS } from "./query/room-query";
 import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
@@ -77,7 +77,7 @@ function HomePage() {
                           description={room.lokasi}
                         />
                         <p className="price">
-                          <span>Rp {room.harga}</span>/malam
+                          <span>{currencyRupiah(room.harga)}</span>/malam
                         </p>
                       </Card>
                     </Link>

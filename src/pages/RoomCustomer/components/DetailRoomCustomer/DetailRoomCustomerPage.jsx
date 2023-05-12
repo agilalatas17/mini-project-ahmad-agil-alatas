@@ -16,6 +16,7 @@ import {
   Button,
 } from "antd";
 import { useParams, useNavigate } from "react-router-dom";
+import { currencyRupiah } from "../../../../helpers/currency-formater";
 import { GET_ROOM_BY_PK } from "../../query/room-query";
 import { GET_BOOKING, ADD_BOOKING } from "../../query/booking-query";
 import { useQuery, useMutation } from "@apollo/client";
@@ -136,7 +137,7 @@ function DetailRoomCustomerPage() {
                 title="Form Pemesanan"
               >
                 <Title level={3} style={{ marginBottom: 32 }}>
-                  Rp {roomData?.harga}{" "}
+                  {currencyRupiah(roomData?.harga)}{" "}
                   <span style={{ fontWeight: 300 }}>/malam</span>
                 </Title>
 
