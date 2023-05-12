@@ -14,6 +14,7 @@ import {
   Form,
   Input,
   Button,
+  message,
 } from "antd";
 import { useParams, useNavigate } from "react-router-dom";
 import { currencyRupiah } from "../../../../helpers/currency-formater";
@@ -28,9 +29,9 @@ function DetailRoomCustomerPage() {
   const { Title } = Typography;
   const [formBooking] = Form.useForm();
   const date = dayjs();
-  const formatDate = date.format("DD/MMM/YYYY");
 
-  const [userInput, setUserInput] = useState({});
+  // const [userInput, setUserInput] = useState({});
+  const [loading, setLoading] = useState(false);
 
   // Regex Validasi
   const noHandphoneRegex = /^(^\+62\s?|^0)(\d{3,4}-?){2}\d{3,4}$/;
@@ -75,6 +76,14 @@ function DetailRoomCustomerPage() {
         },
       },
     });
+
+    setLoading(true);
+    setTimeout(() => {
+      message.success({
+        content: "Berhasil Booking",
+      });
+      setLoading(false);
+    }, 1000);
   };
 
   return (
@@ -219,6 +228,7 @@ function DetailRoomCustomerPage() {
                     type="primary"
                     htmlType="submit"
                     style={{ width: "100%" }}
+                    loading={loading}
                     onClick={() => {
                       if (!token) {
                         navigate("/login");
