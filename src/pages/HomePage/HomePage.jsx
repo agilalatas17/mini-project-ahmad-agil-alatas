@@ -2,7 +2,7 @@ import React from "react";
 import "./homePage.css";
 import { Typography, Button, Row, Col, Carousel, Card, Spin } from "antd";
 import LoadingComponent from "../../components/LoadingComponent/LoadingComponent";
-
+import { currencyRupiah } from "../../helpers/currency-formater";
 import { GET_ROOMS } from "./query/room-query";
 import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
@@ -18,6 +18,14 @@ function HomePage() {
     error: roomCustomerError,
   } = useQuery(GET_ROOMS);
 
+  const scrollToSection = () => {
+    const sectionRoom = document.querySelector("#room");
+    window.scrollTo({
+      top: sectionRoom.offsetTop,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <section id="welcomeSection">
@@ -32,21 +40,30 @@ function HomePage() {
               It's time to create unforgettable moments.
             </p>
 
-            <Button type="primary" htmlType="submit" className="btn-show-me">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="btn-show-me"
+              onClick={scrollToSection}
+            >
               Show Me Now
             </Button>
           </Col>
           <Col span={12} style={{ padding: "0 0 0 50px" }}>
-            <Carousel autoplay>
-              {roomCustomerData?.booking_app_room?.slice(0, 4).map(
-                (item, index) =>
-                  index < 4 && (
-                    <div className="carousel-item" key={index}>
-                      <img src={item.image} />
-                    </div>
-                  )
-              )}
-            </Carousel>
+            {roomCustomerLoading ? (
+              <LoadingComponent />
+            ) : (
+              <Carousel autoplay>
+                {roomCustomerData?.booking_app_room?.slice(0, 4).map(
+                  (item, index) =>
+                    index < 4 && (
+                      <div className="carousel-item" key={index}>
+                        <img src={item.image} />
+                      </div>
+                    )
+                )}
+              </Carousel>
+            )}
           </Col>
         </Row>
       </section>
@@ -77,7 +94,7 @@ function HomePage() {
                           description={room.lokasi}
                         />
                         <p className="price">
-                          <span>Rp {room.harga}</span>/malam
+                          <span>{currencyRupiah(room.harga)}</span>/malam
                         </p>
                       </Card>
                     </Link>

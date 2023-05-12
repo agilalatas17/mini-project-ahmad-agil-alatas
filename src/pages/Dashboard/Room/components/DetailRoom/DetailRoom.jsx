@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { GET_ROOM_BY_PK } from "../../query/room-query";
 import { Row, Space, Typography, Image, Col } from "antd";
 import { Link } from "react-router-dom";
+import { currencyRupiah } from "../../../../../helpers/currency-formater";
 
 function DetailRoom() {
   const { Title } = Typography;
@@ -66,14 +67,14 @@ function DetailRoom() {
               >
                 <Title level={5}>Harga</Title>
                 <p>
-                  Rp <span>{data?.harga}</span>
+                  <span>{currencyRupiah(data?.harga)}</span>
                 </p>
               </Space>
             </Col>
           </Row>
 
           <Link
-            to="/admin/room"
+            to="/admin/room-admin"
             className="btn-kembali"
             style={{ display: "inline-block" }}
           >

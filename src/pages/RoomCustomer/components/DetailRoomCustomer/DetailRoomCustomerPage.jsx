@@ -14,8 +14,10 @@ import {
   Form,
   Input,
   Button,
+  message,
 } from "antd";
 import { useParams, useNavigate } from "react-router-dom";
+import { currencyRupiah } from "../../../../helpers/currency-formater";
 import { GET_ROOM_BY_PK } from "../../query/room-query";
 import { GET_BOOKING, ADD_BOOKING } from "../../query/booking-query";
 import { useQuery, useMutation } from "@apollo/client";
@@ -27,9 +29,9 @@ function DetailRoomCustomerPage() {
   const { Title } = Typography;
   const [formBooking] = Form.useForm();
   const date = dayjs();
-  const formatDate = date.format("DD/MMM/YYYY");
 
-  const [userInput, setUserInput] = useState({});
+  // const [userInput, setUserInput] = useState({});
+  const [loading, setLoading] = useState(false);
 
   // Regex Validasi
   const noHandphoneRegex = /^(^\+62\s?|^0)(\d{3,4}-?){2}\d{3,4}$/;
@@ -74,6 +76,14 @@ function DetailRoomCustomerPage() {
         },
       },
     });
+
+    setLoading(true);
+    setTimeout(() => {
+      message.success({
+        content: "Berhasil Booking",
+      });
+      setLoading(false);
+    }, 1000);
   };
 
   return (
@@ -136,7 +146,7 @@ function DetailRoomCustomerPage() {
                 title="Form Pemesanan"
               >
                 <Title level={3} style={{ marginBottom: 32 }}>
-                  Rp {roomData?.harga}{" "}
+                  {currencyRupiah(roomData?.harga)}{" "}
                   <span style={{ fontWeight: 300 }}>/malam</span>
                 </Title>
 
@@ -218,6 +228,7 @@ function DetailRoomCustomerPage() {
                     type="primary"
                     htmlType="submit"
                     style={{ width: "100%" }}
+                    loading={loading}
                     onClick={() => {
                       if (!token) {
                         navigate("/login");

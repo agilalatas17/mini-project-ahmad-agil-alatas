@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Table, Typography } from "antd";
 import { GET_BOOKING } from "./query/booking-query";
 import { useQuery } from "@apollo/client";
+import { currencyRupiah } from "../../../helpers/currency-formater";
 
 function Booking() {
   const { Title } = Typography;
@@ -25,6 +26,16 @@ function Booking() {
       title: "Nama Pemesan",
       dataIndex: "nama_pemesan",
       key: "nama_pemesan",
+    },
+    {
+      title: "No Whatsapp",
+      dataIndex: "no_handphone",
+      key: "no_handphone",
+    },
+    {
+      title: "Nama Room",
+      dataIndex: "nama_room",
+      key: "nama_room",
     },
     {
       title: "Lokasi",
@@ -51,6 +62,7 @@ function Booking() {
       title: "Total Harga",
       dataIndex: "total_harga",
       key: "total_harga",
+      render: (_, record) => currencyRupiah(record?.total_harga),
     },
   ];
 

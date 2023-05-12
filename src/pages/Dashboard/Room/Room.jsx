@@ -24,6 +24,7 @@ import {
 import { uploaderConfig } from "../../../config/uploader-config";
 import { useSingleUploader } from "../../../hooks/useSingleUploader";
 import { Link } from "react-router-dom";
+import { currencyRupiah } from "../../../helpers/currency-formater";
 import {
   GET_ROOMS,
   ADD_ROOM,
@@ -106,6 +107,7 @@ function Room() {
       title: "Harga",
       dataIndex: "harga",
       key: "harga",
+      render: (_, record) => currencyRupiah(record?.harga),
     },
     {
       title: "Action",
