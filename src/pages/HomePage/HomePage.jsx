@@ -18,6 +18,14 @@ function HomePage() {
     error: roomCustomerError,
   } = useQuery(GET_ROOMS);
 
+  const scrollToSection = () => {
+    const sectionRoom = document.querySelector("#room");
+    window.scrollTo({
+      top: sectionRoom.offsetTop,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <section id="welcomeSection">
@@ -32,7 +40,12 @@ function HomePage() {
               It's time to create unforgettable moments.
             </p>
 
-            <Button type="primary" htmlType="submit" className="btn-show-me">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="btn-show-me"
+              onClick={scrollToSection}
+            >
               Show Me Now
             </Button>
           </Col>
